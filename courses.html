@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calligraphie Arabe</title>
+    <link rel="stylesheet" href="css/courses.css">
+</head>
+<body>
+
+    <!-- Barre de navigation -->
+    <nav class="navbar">
+        <div class="menu">
+            <img src="img/courses/menu.png" class="menu-icon"> <!-- Icône de menu -->
+            <ul class="menu-items">
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Exercices</a></li>
+                <li><a href="#">À propos</a></li>
+            </ul>
+        </div>
+        <div class="user-icon">
+            <img src="img/courses/animal.jpg" alt="Utilisateur" class="user-icon-img"> <!-- Icône utilisateur -->
+        </div>
+    </nav>
+
+
+    <div class="container">
+        <h1 id="word">بِسْمِ</h1>
+        <p id="message" class="hidden">Le canevas a été effacé.</p>
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <button id="validate" onclick="nextWord()">Valider</button>
+    </div>
+
+    <script src="scripts/courses.js"></script>
+</body>
+</html>

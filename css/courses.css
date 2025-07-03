@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
+
+body {
+    font-family: 'Amiri', serif;
+    background: radial-gradient(circle, #f4e3d7, #d9a87c);
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---- Barre de navigation ---- */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: #8b5a2b;
+    color: white;
+    z-index: 10; /* Assure-toi que la barre de navigation est au-dessus du contenu */
+}
+
+/* ---- Menu ---- */
+.menu {
+    position: relative;
+    cursor: pointer;
+}
+
+.menu-items {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    background: white;
+    color: #8b5a2b;
+    list-style: none;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 150px; /* Largeur du menu */
+}
+
+.menu-items li {
+    padding: 10px;
+    text-align: left;
+}
+
+.menu-items li a {
+    text-decoration: none;
+    color: #8b5a2b;
+    font-weight: bold;
+}
+
+.menu.open .menu-items {
+    display: block;
+}
+
+/* ---- Icône utilisateur ---- */
+.user-icon {
+    font-size: 28px;
+}
+
+.user-icon-img {
+    width: 30px; /* Taille de l'icône utilisateur */
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px; /* Positionnement à droite */
+}
+
+/* ---- Style général ---- */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #8b5a2b;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 80px; /* Pour éviter que le contenu ne soit caché sous la barre */
+}
+
+canvas {
+    border: 6px solid #8b5a2b;
+    background-color: #fff8e1;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    cursor: crosshair;
+}
+
+button {
+    margin-top: 15px;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(45deg, #8b5a2b, #a66a3a);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover {
+    background: linear-gradient(45deg, #a66a3a, #c78b50);
+    transform: scale(1.05);
+}
+
+/* Icônes du menu */
+.menu-icon {
+    width: 30px; /* Taille de l'icône du menu */
+    height: 30px;
+    cursor: pointer;
+}
+
+.navbar .menu {
+    display: flex;
+    align-items: center;
+}
+
+/* ---- Icône utilisateur ---- */
+.user-icon {
+    font-size: 28px;
+}
+
+.user-icon-img {
+    width: 30px; 
+    height: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 60px; 
+    border-radius: 50%; 
+    border: 3px solid #fff; 
+    object-fit: cover; 
+}

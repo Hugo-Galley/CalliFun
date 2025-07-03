@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <title>CaliFun - Tableau de Bord</title>
+</head>
+
+<body>
+    <div class="container">
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="img/dashboard/CaliFunLogo.png">
+                    <h2>Cali<span class="danger">Fun</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Tableau de bord</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Mes cours</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">quiz</span>
+                    <h3>Exercices</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">analytics</span>
+                    <h3>Progression</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Profil</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Paramètres</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Déconnexion</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-content">
+                        <h1>Mes cours de langues</h1>
+                        <p>Continuez votre apprentissage là où vous vous êtes arrêté</p>
+                    </div>
+                    <div class="header-profile">
+                        <button id="menu-btn">
+                            <span class="material-icons-sharp">menu</span>
+                        </button>
+                        <div class="dark-mode">
+                            <span class="material-icons-sharp active">light_mode</span>
+                            <span class="material-icons-sharp">dark_mode</span>
+                        </div>
+                        <div class="profile">
+                            <div class="info">
+                                <p>Salut, <b>Hakim</b></p>
+                                <small class="text-muted">Étudiant</small>
+                            </div>
+                            <div class="profile-photo">
+                                <img src="img/dashboard/user.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">school</span>
+                        <div>
+                            <p>Cours complétés</p>
+                            <h4>12</h4>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">timer</span>
+                        <div>
+                            <p>Temps d'étude</p>
+                            <h4>45h</h4>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">trending_up</span>
+                        <div>
+                            <p>Progression</p>
+                            <h4>78%</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="courses-section">
+                <div class="level-section">
+                    <h2 class="level-title">
+                        <span class="level-badge beginner">Débutant</span>
+                    </h2>
+                    <div class="carousel-wrapper">
+                        <button class="carousel-btn prev" onclick="scrollCarousel('beginner', -1)">
+                            <span class="material-icons-sharp">chevron_left</span>
+                        </button>
+                        <div class="carousel" id="carousel-beginner">
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Vocabulaire de base">
+                                </div>
+                                <h3>Vocabulaire de base</h3>
+                                <p>Apprenez les mots essentiels du quotidien</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 65%"></div>
+                                    </div>
+                                    <span class="progress-text">65%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Grammaire simple">
+                                </div>
+                                <h3>Grammaire simple</h3>
+                                <p>Les règles de base pour bien commencer</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 45%"></div>
+                                    </div>
+                                    <span class="progress-text">45%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Conversation simple">
+                                </div>
+                                <h3>Conversation simple</h3>
+                                <p>Premiers dialogues et expressions</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 30%"></div>
+                                    </div>
+                                    <span class="progress-text">30%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Prononciation">
+                                </div>
+                                <h3>Prononciation</h3>
+                                <p>Améliorez votre accent et votre élocution</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 80%"></div>
+                                    </div>
+                                    <span class="progress-text">80%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Écoute active">
+                                </div>
+                                <h3>Écoute active</h3>
+                                <p>Développez vos capacités d'écoute</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 20%"></div>
+                                    </div>
+                                    <span class="progress-text">20%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" onclick="scrollCarousel('beginner', 1)">
+                            <span class="material-icons-sharp">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="level-section">
+                    <h2 class="level-title">
+                        <span class="level-badge intermediate">Intermédiaire</span>
+                    </h2>
+                    <div class="carousel-wrapper">
+                        <button class="carousel-btn prev" onclick="scrollCarousel('intermediate', -1)">
+                            <span class="material-icons-sharp">chevron_left</span>
+                        </button>
+                        <div class="carousel" id="carousel-intermediate">
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Grammaire avancée">
+                                </div>
+                                <h3>Grammaire avancée</h3>
+                                <p>Perfectionnez vos structures grammaticales</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 55%"></div>
+                                    </div>
+                                    <span class="progress-text">55%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Compréhension orale">
+                                </div>
+                                <h3>Compréhension orale</h3>
+                                <p>Écoutez et comprenez des contenus variés</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 70%"></div>
+                                    </div>
+                                    <span class="progress-text">70%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Expression écrite">
+                                </div>
+                                <h3>Expression écrite</h3>
+                                <p>Rédigez avec aisance et précision</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 40%"></div>
+                                    </div>
+                                    <span class="progress-text">40%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage.webp" alt="Culture et société">
+                                </div>
+                                <h3>Culture et société</h3>
+                                <p>Découvrez les traditions et coutumes</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 25%"></div>
+                                    </div>
+                                    <span class="progress-text">25%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" onclick="scrollCarousel('intermediate', 1)">
+                            <span class="material-icons-sharp">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="level-section">
+                    <h2 class="level-title">
+                        <span class="level-badge expert">Expert</span>
+                    </h2>
+                    <div class="carousel-wrapper">
+                        <button class="carousel-btn prev" onclick="scrollCarousel('expert', -1)">
+                            <span class="material-icons-sharp">chevron_left</span>
+                        </button>
+                        <div class="carousel" id="carousel-expert">
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage2.webp" alt="Littérature">
+                                </div>
+                                <h3>Littérature</h3>
+                                <p>Analysez et interprétez des œuvres</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 85%"></div>
+                                    </div>
+                                    <span class="progress-text">85%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage2.webp" alt="Débats et argumentation">
+                                </div>
+                                <h3>Débats et argumentation</h3>
+                                <p>Maîtrisez l'art de la persuasion</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 60%"></div>
+                                    </div>
+                                    <span class="progress-text">60%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage2.webp" alt="Langue des affaires">
+                                </div>
+                                <h3>Langue des affaires</h3>
+                                <p>Communication professionnelle avancée</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 75%"></div>
+                                    </div>
+                                    <span class="progress-text">75%</span>
+                                </div>
+                            </div>
+                            
+                            <div class="course-card">
+                                <div class="card-image">
+                                    <img src="img/dashboard/CaliImage2.webp" alt="Perfectionnement">
+                                </div>
+                                <h3>Perfectionnement</h3>
+                                <p>Atteignez un niveau natif</p>
+                                <div class="progress-container">
+                                    <div class="progress-bar">
+                                        <div class="progress" style="width: 90%"></div>
+                                    </div>
+                                    <span class="progress-text">90%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-btn next" onclick="scrollCarousel('expert', 1)">
+                            <span class="material-icons-sharp">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/dashboard.js"></script>
+</body>
+
+</html>
