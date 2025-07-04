@@ -3,33 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calligraphie Arabe</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
     <link rel="stylesheet" href="css/courses.css">
+    <title>CaliFun - Cours de Calligraphie</title>
 </head>
 <body>
-    <!-- Lien de retour vers le dashboard -->
-    <a href="dashboard.html" target="_blank" class="back-btn">← Retour</a>
-    <!-- Barre de navigation -->
-    <nav class="navbar">
-        <div class="menu">
-            <img src="img/courses/menu.png" class="menu-icon"> <!-- Icône de menu -->
-            <ul class="menu-items">
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Exercices</a></li>
-                <li><a href="#">À propos</a></li>
-            </ul>
-        </div>
-        <div class="user-icon">
-            <img src="img/courses/animal.jpg" alt="Utilisateur" class="user-icon-img"> <!-- Icône utilisateur -->
-        </div>
-    </nav>
-
-
     <div class="container">
-        <h1 id="word">بِسْمِ</h1>
-        <p id="message" class="hidden">Le canevas a été effacé.</p>
-        <canvas id="canvas" width="300" height="300"></canvas>
-        <button id="validate" onclick="nextWord()">Valider</button>
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="img/dashboard/CaliFunLogo.png">
+                    <h2>Cali<span class="danger">Fun</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="dashboard.html">
+                    <span class="material-icons-sharp">dashboard</span>
+                    <h3>Tableau de bord</h3>
+                </a>
+                <a href="#" class="active">
+                    <span class="material-icons-sharp">school</span>
+                    <h3>Mes cours</h3>
+                </a>
+                <a href="exercices.html">
+                    <span class="material-icons-sharp">quiz</span>
+                    <h3>Exercices</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">analytics</span>
+                    <h3>Progression</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">person</span>
+                    <h3>Profil</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">settings</span>
+                    <h3>Paramètres</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">logout</span>
+                    <h3>Déconnexion</h3>
+                </a>
+            </div>
+        </aside>
+
+        <main>
+            <div class="header">
+                <div class="header-top">
+                    <div class="header-content">
+                        <h1>Cours de Calligraphie Arabe</h1>
+                        <p>Apprenez l'art de la belle écriture arabe</p>
+                    </div>
+                    <div class="header-profile">
+                        <button id="menu-btn">
+                            <span class="material-icons-sharp">menu</span>
+                        </button>
+                        <div class="dark-mode">
+                            <span class="material-icons-sharp active">light_mode</span>
+                            <span class="material-icons-sharp">dark_mode</span>
+                        </div>
+                        <div class="profile">
+                            <div class="info">
+                                <p>Salut, <b>Hakim</b></p>
+                                <small class="text-muted">Étudiant</small>
+                            </div>
+                            <div class="profile-photo">
+                                <img src="img/dashboard/user.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="header-stats">
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">edit</span>
+                        <div>
+                            <p>Mots pratiqués</p>
+                            <h4>24</h4>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">timer</span>
+                        <div>
+                            <p>Temps de pratique</p>
+                            <h4>0:00min</h4>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="material-icons-sharp">trending_up</span>
+                        <div>
+                            <p>Précision</p>
+                            <h4>85%</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="course-content">
+                <div class="practice-section">
+                    <div class="word-card">
+                        <div class="word-header">
+                            <h2>Mot à pratiquer</h2>
+                            <button class="refresh-btn" onclick="nextWord()">
+                                <span class="material-icons-sharp">refresh</span>
+                            </button>
+                        </div>
+                        <div class="arabic-word">
+                            <h1 id="word">بِسْمِ</h1>
+                            <p class="word-meaning">Au nom de</p>
+                        </div>
+                    </div>
+
+                    <div class="canvas-section">
+                        <div class="canvas-header">
+                            <h3>Zone de pratique</h3>
+                            <div class="canvas-controls">
+                                <button class="control-btn" onclick="clearCanvas()">
+                                    <span class="material-icons-sharp">clear</span>
+                                    Effacer
+                                </button>
+                                <button class="control-btn" onclick="undoLastStroke()">
+                                    <span class="material-icons-sharp">undo</span>
+                                    Annuler
+                                </button>
+                            </div>
+                        </div>
+                        <div class="canvas-container">
+                            <canvas id="canvas" width="400" height="300"></canvas>
+                        </div>
+                        <div class="canvas-footer">
+                            <p id="message" class="message hidden">Le canevas a été effacé.</p>
+                            <button id="validate" class="validate-btn" onclick="validateWriting()">
+                                <span class="material-icons-sharp">check_circle</span>
+                                Valider l'écriture
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="progress-section">
+                    <div class="progress-card">
+                        <h3>Progression de la séance</h3>
+                        <div class="progress-container">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 60%"></div>
+                            </div>
+                            <span class="progress-text">6/10 mots</span>
+                        </div>
+                    </div>
+
+                    <div class="tips-card">
+                        <h3>
+                            <span class="material-icons-sharp">lightbulb</span>
+                            Conseils
+                        </h3>
+                        <ul>
+                            <li>Écrivez de droite à gauche</li>
+                            <li>Respectez les proportions</li>
+                            <li>Gardez une vitesse régulière</li>
+                            <li>Pratiquez les liaisons</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
 
     <script src="scripts/courses.js"></script>
