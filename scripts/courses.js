@@ -51,6 +51,9 @@ function draw(event) {
     // Ajouter le point au trait actuel
     const currentStroke = strokes[strokes.length - 1];
     currentStroke.push({x: event.offsetX, y: event.offsetY});
+    
+    // Ajouter aussi les points à la liste globale pour la console
+    points.push({x: event.offsetX, y: event.offsetY});
 }
 
 /**
@@ -142,6 +145,9 @@ function nextWord() {
     meaningElement.textContent = word.french;
     clearCanvas();
     showMessage("Nouveau mot affiché !");
+    
+    // Réinitialiser les points pour le nouveau mot
+    points = [];
 }
 
 // Fonction pour valider l'écriture
@@ -150,6 +156,15 @@ function validateWriting() {
         showMessage("Veuillez d'abord écrire quelque chose !");
         return;
     }
+    
+    // Afficher les données dans la console
+    console.log("=== DONNÉES DE L'ÉCRITURE ===");
+    console.log("Points enregistrés :", points);
+    console.log("Nombre total de points :", points.length);
+    console.log("Traits enregistrés :", strokes);
+    console.log("Nombre de traits :", strokes.length);
+    console.log("Mot actuel :", wordElement.textContent);
+    console.log("===============================");
     
     wordsCompleted++;
     updateProgress();
