@@ -169,9 +169,24 @@ function validateWriting() {
     wordsCompleted++;
     updateProgress();
     
+    // Générer et afficher le score
+    const scoreResult = generateScore();
+    console.log("Score généré :", scoreResult);
+    
     // Vérifier si l'exercice est terminé
     if (wordsCompleted >= 10) {
-        showCongratulations();
+        // Attendre un peu pour que le toaster s'affiche avant la popup
+        setTimeout(() => {
+            showCongratulations();
+        }, 1000);
+        return;
+    }
+    
+    // Si le score est trop faible, ne pas passer au mot suivant automatiquement
+    if (scoreResult.score < 0.4) {
+        showMessage("Score trop faible ! Réessayez ce mot.");
+        wordsCompleted--; // Décrémenter car on n'a pas validé
+        updateProgress();
         return;
     }
     
@@ -181,6 +196,105 @@ function validateWriting() {
     setTimeout(() => {
         nextWord();
     }, 2000);
+}
+
+// Variables pour le scoring
+let totalScore = 0;
+let averageScore = 0;
+
+// Fonction pour générer un score aléatoire et afficher le résultat
+function generateScore() {
+    const score = Math.random(); // Score entre 0 et 1
+    let message, color, points, icon;
+    
+    if (score < 0.4) {
+        // Score faible - Rouge
+        message = "Pas terrible... Essayez encore !";
+        color = "error";
+        points = 0;
+        icon = "thumb_down";
+    } else if (score >= 0.4 && score < 0.6) {
+        // Score moyen - Orange
+        message = "Pas mal, on peut mieux faire !";
+        color = "warning";
+        points = 0.5;
+        icon = "thumb_up";
+    } else {
+        // Score élevé - Vert
+        message = "Excellent travail ! Parfait !";
+        color = "success";
+        points = 1;
+        icon = "star";
+    }
+    
+    // Ajouter les points au score total
+    totalScore += points;
+    
+    // Calculer la moyenne
+    averageScore = totalScore / wordsCompleted;
+    
+    // Afficher le toaster
+    showToaster(message, color, score, points, icon);
+    
+    // Mettre à jour l'affichage du score dans les stats
+    updateScoreDisplay();
+    
+    return { score, points, message, color };
+}
+
+// Fonction pour afficher un toaster
+function showToaster(message, type, score, points, icon) {
+    // Créer le toaster
+    const toaster = document.createElement('div');
+    toaster.className = `toaster toaster-${type}`;
+    toaster.innerHTML = `
+        <div class="toaster-content">
+            <div class="toaster-icon">
+                <span class="material-icons-sharp">${icon}</span>
+            </div>
+            <div class="toaster-text">
+                <h4>${message}</h4>
+                <p>Score: ${(score * 100).toFixed(0)}% | Points: +${points}</p>
+            </div>
+            <div class="toaster-close" onclick="closeToaster(this)">
+                <span class="material-icons-sharp">close</span>
+            </div>
+        </div>
+    `;
+    
+    // Ajouter le toaster au body
+    document.body.appendChild(toaster);
+    
+    // Animation d'entrée
+    setTimeout(() => {
+        toaster.classList.add('toaster-show');
+    }, 100);
+    
+    // Auto-suppression après 4 secondes
+    setTimeout(() => {
+        closeToaster(toaster);
+    }, 4000);
+}
+
+// Fonction pour fermer un toaster
+function closeToaster(toaster) {
+    if (toaster.classList) {
+        toaster.classList.remove('toaster-show');
+        setTimeout(() => {
+            if (toaster.parentNode) {
+                toaster.parentNode.removeChild(toaster);
+            }
+        }, 300);
+    }
+}
+
+// Fonction pour mettre à jour l'affichage du score
+function updateScoreDisplay() {
+    const precisionStatElement = document.querySelector('.stat-item:nth-child(3) h4');
+    if (precisionStatElement) {
+        const percentage = Math.round(averageScore * 100);
+        precisionStatElement.textContent = `${percentage}%`;
+    }
 }
 
 // Fonction pour mettre à jour la progression
@@ -356,6 +470,8 @@ function showCompletedExercise() {
 function restartExercise() {
     // Réinitialiser les variables
     wordsCompleted = 0;
+    totalScore = 0;
+    averageScore = 0;
     startTime = null;
     currentTime = 0;
     stopTimer();
