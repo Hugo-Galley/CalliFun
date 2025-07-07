@@ -209,7 +209,7 @@ function generateScore() {
     
     if (score < 0.4) {
         // Score faible - Rouge
-        message = "Pas terrible... Essayez encore !";
+        message = "Courage ! Vous êtes sur la bonne voie.";
         color = "error";
         points = 0;
         icon = "thumb_down";
